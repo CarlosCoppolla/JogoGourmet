@@ -26,7 +26,12 @@ public class Mensagens {
         return JOptionPane.showConfirmDialog(null, message, null, JOptionPane.YES_NO_OPTION);
     }
 
-    public String caixaDeInput(String message, String title) {
+    public String caixaDeInputPrato(String message, String title) {
+        return JOptionPane.showInputDialog(null, message, title, JOptionPane.QUESTION_MESSAGE);
+    }
+
+    public String caixaDeInputTipo(String prato, String pratoPadrao, String title) {
+        String message = String.format(Constantes.QUAL_TIPO, prato, pratoPadrao);
         return JOptionPane.showInputDialog(null, message, title, JOptionPane.QUESTION_MESSAGE);
     }
 

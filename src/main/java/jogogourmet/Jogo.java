@@ -16,8 +16,11 @@ public class Jogo {
 
     private Mensagens mensagemService;
 
-    ArrayList<String> pratosMassa = new ArrayList(Arrays.asList(Constantes.LASAGNA));
-    ArrayList<String> pratosOutros = new ArrayList(Arrays.asList(Constantes.BOLO));
+    //ArrayList<String> pratosMassa = new ArrayList(Arrays.asList(Constantes.LASAGNA));
+    //ArrayList<String> pratosOutros = new ArrayList(Arrays.asList(Constantes.BOLO));
+
+    HashMap<String, String> pratosMassa = new HashMap<>();
+    HashMap<String, String> pratosOutros = new HashMap<>();
 
     private Integer opcaoSelecionada = null;
 
@@ -43,48 +46,70 @@ public class Jogo {
 
         opcaoSelecionada = mensagemService.confirmarPrato(Constantes.MASSA);
         if (opcaoSelecionada == JOptionPane.YES_OPTION) {
-            verificaMassa();
+            if(!pratosMassa.isEmpty()){
+                verificaMassa();
+            }
+            verificaPadrao(Constantes.LASAGNA);
         } else {
-            VerificaOutros();
+            if(!pratosOutros.isEmpty()){
+                VerificaOutros();
+            }
+            verificaPadrao(Constantes.BOLO);
         }
         iniciarJogo();
     }
 
     private void verificaMassa() {
-        for (String prato : pratosMassa) {
-            opcaoSelecionada = mensagemService.confirmarPrato(prato);
+        for (Map.Entry<String, String> prato : pratosMassa.entrySet()) {
+            opcaoSelecionada = mensagemService.confirmarPrato(prato.getKey());
             if (opcaoSelecionada == JOptionPane.YES_OPTION) {
-                mensagemService.sucessoMensagem();
-                iniciarJogo();
+                opcaoSelecionada = mensagemService.confirmarPrato(prato.getValue());
+                if (opcaoSelecionada == JOptionPane.YES_OPTION) {
+                    mensagemService.sucessoMensagem();
+                    iniciarJogo();
+                }
             }
         }
-        novoPrato(Constantes.MASSA);
     }
 
     private void VerificaOutros() {
-        for (String prato : pratosOutros) {
-            opcaoSelecionada = mensagemService.confirmarPrato(prato);
+        for (Map.Entry<String, String> prato : pratosOutros.entrySet()) {
+            opcaoSelecionada = mensagemService.confirmarPrato(prato.getKey());
             if (opcaoSelecionada == JOptionPane.YES_OPTION) {
-                mensagemService.sucessoMensagem();
-                iniciarJogo();
+                opcaoSelecionada = mensagemService.confirmarPrato(prato.getValue());
+                if (opcaoSelecionada == JOptionPane.YES_OPTION) {
+                    mensagemService.sucessoMensagem();
+                    iniciarJogo();
+                }
             }
         }
-        novoPrato(Constantes.OUTROS);
     }
 
-    private void novoPrato(String tipo) {
-        String novoPrato = mensagemService.caixaDeInput(Constantes.QUAL_PRATO, Constantes.DESISTO);
+    private void verificaPadrao(String pratoPadrao) {
+        opcaoSelecionada = mensagemService.confirmarPrato(pratoPadrao);
+        if (opcaoSelecionada == JOptionPane.YES_OPTION) {
+            mensagemService.sucessoMensagem();
+            iniciarJogo();
+        }
+
+        novoPrato(pratoPadrao);
+    }
+
+    private void novoPrato(String pratoPadrao) {
+        String novoPrato = mensagemService.caixaDeInputPrato(Constantes.QUAL_PRATO, Constantes.DESISTO);
         if (novoPrato == null) {
             sairJogo();
         } else if (novoPrato.isEmpty()){
             mensagemService.invalidoMensagem();
-            novoPrato(tipo);
+            novoPrato(pratoPadrao);
         }
 
-        if (tipo.equals(Constantes.MASSA)) {
-            pratosMassa.add(novoPrato);
+        String novoTipo = mensagemService.caixaDeInputTipo(novoPrato, pratoPadrao, Constantes.COMPLETE);
+
+        if (pratoPadrao.equals(Constantes.LASAGNA)) {
+            pratosMassa.put(novoTipo, novoPrato);
         } else {
-            pratosOutros.add(novoPrato);
+            pratosOutros.put(novoTipo, novoPrato);
         }
 
         iniciarJogo();
