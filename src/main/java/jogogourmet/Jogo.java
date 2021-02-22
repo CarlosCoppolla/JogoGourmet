@@ -1,7 +1,5 @@
 package jogogourmet;
 
-import java.util.Map;
-
 import javax.swing.JOptionPane;
 
 import jogogourmet.model.Prato;
@@ -55,7 +53,7 @@ public class Jogo {
     private void verificaPratos(Prato prato) {
         opcaoSelecionada = mensagemService.confirmarPrato(prato.getValue());
         if (opcaoSelecionada == JOptionPane.YES_OPTION && !prato.hasMassa() && !prato.hasOutros()) {
-            mensagemService.ultimaMensagem();
+            mensagemService.sucessoMensagem();
             iniciarJogo();
         } else {
             if (opcaoSelecionada == JOptionPane.YES_OPTION && prato.hasOutros()) {
