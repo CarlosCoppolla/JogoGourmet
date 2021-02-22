@@ -10,7 +10,7 @@ public class Constantes {
     public static final String SAIR = "Deseja finalizar o jogo?";
     public static final String LASAGNA = "Lasanha";
     public static final String MASSA = "Massa";
-    public static final String QUAL_TIPO = "%s é _____ mas %s não.";;
+    public static final String QUAL_TIPO = "%s é _____ mas %s não.";
     public static final String BOLO = "Bolo de Chocolate";
     public static final String PENSE_EM_UM_PRATO = "Pense em um prato que gosta";
     public static final String SUCESSO = "Acertei de novo!";
