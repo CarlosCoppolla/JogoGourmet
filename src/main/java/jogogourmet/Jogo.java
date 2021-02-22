@@ -44,6 +44,8 @@ public class Jogo {
         opcaoSelecionada = mensagemService.confirmarPrato(pratos.getValue());
         if (opcaoSelecionada == JOptionPane.YES_OPTION) {
             verificaPratos(pratos.getMassa());
+        } else if (opcaoSelecionada == JOptionPane.CLOSED_OPTION) {
+            sairJogo();
         } else {
             verificaPratos(pratos.getOutros());
         }
@@ -55,6 +57,8 @@ public class Jogo {
         if (opcaoSelecionada == JOptionPane.YES_OPTION && !prato.hasMassa() && !prato.hasOutros()) {
             mensagemService.sucessoMensagem();
             iniciarJogo();
+        } else if (opcaoSelecionada == JOptionPane.CLOSED_OPTION) {
+            sairJogo();
         } else {
             if (opcaoSelecionada == JOptionPane.YES_OPTION && prato.hasOutros()) {
                 verificaPratos(prato.getOutros());
