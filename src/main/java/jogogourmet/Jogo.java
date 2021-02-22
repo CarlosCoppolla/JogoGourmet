@@ -1,9 +1,6 @@
 package jogogourmet;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.swing.JOptionPane;
@@ -15,9 +12,6 @@ import jogogourmet.util.Constantes;
 public class Jogo {
 
     private Mensagens mensagemService;
-
-    //ArrayList<String> pratosMassa = new ArrayList(Arrays.asList(Constantes.LASAGNA));
-    //ArrayList<String> pratosOutros = new ArrayList(Arrays.asList(Constantes.BOLO));
 
     HashMap<String, String> pratosMassa = new HashMap<>();
     HashMap<String, String> pratosOutros = new HashMap<>();
