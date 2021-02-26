@@ -11,8 +11,8 @@ public class Mensagens {
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public int ultimaMensagem() {
-        return JOptionPane.showConfirmDialog(null, Constantes.FIM_DE_JOGO, Constantes.TITULO,
+    public void ultimaMensagem() {
+        JOptionPane.showConfirmDialog(null, Constantes.FIM_DE_JOGO, Constantes.TITULO,
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }
 
