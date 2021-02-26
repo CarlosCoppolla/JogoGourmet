@@ -17,22 +17,22 @@ public class Mensagens {
     }
 
     public int sairMensagem() {
-        String message = Constantes.SAIR;
-        return JOptionPane.showConfirmDialog(null, message, null, JOptionPane.YES_NO_OPTION);
+        String mensagem = Constantes.SAIR;
+        return JOptionPane.showConfirmDialog(null, mensagem, null, JOptionPane.YES_NO_OPTION);
     }
 
     public int confirmarPrato(String prato) {
-        String message = String.format(Constantes.PRATO_QUE_PENSOU, prato);
-        return JOptionPane.showConfirmDialog(null, message, null, JOptionPane.YES_NO_OPTION);
+        String mensagem = String.format(Constantes.PRATO_QUE_PENSOU, prato);
+        return JOptionPane.showConfirmDialog(null, mensagem, null, JOptionPane.YES_NO_OPTION);
     }
 
-    public String caixaDeInputPrato(String message, String title) {
-        return JOptionPane.showInputDialog(null, message, title, JOptionPane.QUESTION_MESSAGE);
+    public String caixaDeInputPrato(String mensagem, String titulo) {
+        return JOptionPane.showInputDialog(null, mensagem, titulo, JOptionPane.QUESTION_MESSAGE);
     }
 
-    public String caixaDeInputTipo(String prato, String pratoPadrao, String title) {
-        String message = String.format(Constantes.QUAL_TIPO, prato, pratoPadrao);
-        return JOptionPane.showInputDialog(null, message, title, JOptionPane.QUESTION_MESSAGE);
+    public String caixaDeInputTipo(String prato, String pratoPadrao, String titulo) {
+        String mensagem = String.format(Constantes.QUAL_TIPO, prato, pratoPadrao);
+        return JOptionPane.showInputDialog(null, mensagem, titulo, JOptionPane.QUESTION_MESSAGE);
     }
 
     public void sucessoMensagem() {
