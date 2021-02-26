@@ -80,8 +80,8 @@ public class Jogo {
         }
         String novoTipo = mensagemService.caixaDeInputTipo(novoPrato, pratos.getValue(), Constantes.COMPLETE);
 
-        String oldValue = prato.getValue();
-        prato.setMassa(new Prato(oldValue));
+        String ultimoPrato = prato.getValue();
+        prato.setMassa(new Prato(ultimoPrato));
         prato.setOutros(new Prato(novoPrato));
         prato.setValue(novoTipo);
 
