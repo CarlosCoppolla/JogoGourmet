@@ -11,7 +11,7 @@ public class Jogo {
 
     private Mensagens mensagemService;
 
-    private Prato pratos;
+    private final Prato pratos;
 
     private Integer opcaoSelecionada = null;
 
@@ -30,7 +30,7 @@ public class Jogo {
         sairJogo();
     }
 
-    public void sairJogo() {
+    private void sairJogo() {
         opcaoSelecionada = mensagemService.sairMensagem();
         if (opcaoSelecionada == JOptionPane.OK_OPTION) {
             mensagemService.ultimaMensagem();
@@ -41,7 +41,7 @@ public class Jogo {
     }
 
     private void iniciarPerguntas() {
-        opcaoSelecionada = mensagemService.confirmarPrato(pratos.getValue());
+        opcaoSelecionada = mensagemService.confirmarPrato(pratos.getValor());
         if (opcaoSelecionada == JOptionPane.YES_OPTION) {
             verificaPratos(pratos.getMassa());
         } else if (opcaoSelecionada == JOptionPane.CLOSED_OPTION) {
@@ -53,7 +53,7 @@ public class Jogo {
     }
 
     private void verificaPratos(Prato prato) {
-        opcaoSelecionada = mensagemService.confirmarPrato(prato.getValue());
+        opcaoSelecionada = mensagemService.confirmarPrato(prato.getValor());
         if (opcaoSelecionada == JOptionPane.YES_OPTION && !prato.hasMassa() && !prato.hasOutros()) {
             mensagemService.sucessoMensagem();
             iniciarJogo();
@@ -78,12 +78,12 @@ public class Jogo {
             mensagemService.invalidoMensagem();
             novoPrato(prato);
         }
-        String novoTipo = mensagemService.caixaDeInputTipo(novoPrato, pratos.getValue(), Constantes.COMPLETE);
+        String novoTipo = mensagemService.caixaDeInputTipo(novoPrato, pratos.getValor(), Constantes.COMPLETE);
 
-        String ultimoPrato = prato.getValue();
+        String ultimoPrato = prato.getValor();
         prato.setMassa(new Prato(ultimoPrato));
         prato.setOutros(new Prato(novoPrato));
-        prato.setValue(novoTipo);
+        prato.setValor(novoTipo);
 
         iniciarJogo();
     }

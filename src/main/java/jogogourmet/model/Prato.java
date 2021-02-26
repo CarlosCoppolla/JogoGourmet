@@ -2,15 +2,15 @@ package jogogourmet.model;
 
 public class Prato {
 
-    private String value;
+    private String valor;
 
     private Prato massa;
 
     private Prato outros;
 
-    public Prato(String value) {
+    public Prato(String valor) {
         super();
-        this.value = value;
+        this.valor = valor;
     }
 
     public boolean hasMassa() {
@@ -21,12 +21,12 @@ public class Prato {
         return this.outros != null;
     }
 
-    public String getValue() {
-        return value;
+    public String getValor() {
+        return valor;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setValor(String valor) {
+        this.valor = valor;
     }
 
     public Prato getMassa() {
